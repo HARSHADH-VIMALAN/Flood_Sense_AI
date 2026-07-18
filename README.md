@@ -178,8 +178,6 @@ Upload an Excel (.xlsx) file containing the required environmental features and 
 
 **Harshadh Vimalan**
 
-B.Sc Artificial Intelligence & Machine Learning
-
 ---
 
 ## ⭐ If you found this project useful, please consider giving it a Star!
