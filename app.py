@@ -1,3 +1,4 @@
+from groq import Groq
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -12,6 +13,72 @@ from sklearn.metrics import (
 )
 import warnings
 warnings.filterwarnings("ignore")
+
+# ==========================
+# GROQ AI CONFIGURATION
+# ==========================
+
+GROQ_API_KEY = "YOUR_API_KEY"
+
+client = Groq(
+    api_key=GROQ_API_KEY.strip()
+)
+
+# ==========================
+# GROQ AI FUNCTION
+# ==========================
+
+def ask_ai(prompt):
+
+    try:
+
+        response = client.chat.completions.create(
+
+            model="llama-3.3-70b-versatile",
+
+            messages=[
+                {
+                    "role": "system",
+                    "content": """
+You are FloodSense AI.
+
+You help people during floods.
+
+You provide:
+
+• Flood safety
+• Rescue guidance
+• Nearby hospitals
+• Nearby police stations
+• Nearby fire stations
+• Relief camps
+• Flood preparedness
+• First aid
+• Government emergency support
+• Evacuation planning
+• Weather precautions
+
+Always answer in simple English.
+
+Keep answers practical.
+"""
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+
+            temperature=0.4,
+            max_tokens=700
+
+        )
+
+        return response.choices[0].message.content
+
+    except Exception as e:
+
+        return f"❌ Error : {e}"
 
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -349,7 +416,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 #  TABS
 # ════════════════════════════════════════════════════════════════════════════════
 T = st.tabs(["🏠 Dashboard","🔍 Predict Risk","🗺️ Flood Map",
-             "📊 Risk Factors","🤖 AI Performance","📋 Data Explorer"])
+             "📊 Risk Factors","🤖 AI Performance","📋 Data Explorer","🤖 AI Assistant"])
 
 # ─────────────────────────────────────────────────────────────────────────────
 # TAB 1 — DASHBOARD
@@ -630,6 +697,7 @@ with T[1]:
             fig_c.update_layout(**PL, showlegend=False,
                                 margin=dict(l=10,r=50,t=45,b=10))
             st.plotly_chart(fig_c, use_container_width=True)
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # TAB 3 — FLOOD MAP
@@ -987,7 +1055,202 @@ st.markdown("""
   <span style="font-size:0.72rem">Built with Streamlit · Scikit-learn · Plotly · Python</span>
 </div>
 """, unsafe_allow_html=True)
+
+#----------------------------AI-------------------------------------------------#
+
+with T[6]:
+
+    st.markdown(
+        '<div class="sec-head">🤖 Flood AI Assistant</div>',
+        unsafe_allow_html=True
+    )
+
+    st.info(
+        "Ask anything regarding floods, rescue, hospitals, evacuation, weather or safety."
+    )
+
+    question = st.text_area(
+        "Ask FloodSense AI",
+        height=120,
+        placeholder="Example:\nWhere is the nearest flood relief centre in Chennai?"
+    )
+
+    if st.button(
+        "Ask AI",
+        key="ask_ai_button"
+    ):
+
+        with st.spinner("Thinking..."):
+
+            answer = ask_ai(question)
+
+        st.success(answer)
+
+    st.divider()
+
+    st.subheader("📍 Nearby Help Centres")
+
+    city = st.text_input(
+        "Enter your city",
+        key="city_name"
+    )
+
+    if st.button(
+        "Find Help Centres",
+        key="find_help"
+    ):
+
+        prompt = f"""
+
+Suggest nearby
+
+Hospitals
+
+Police Stations
+
+Fire Stations
+
+Flood Relief Camps
+
+Government Help Centres
+
+NGOs
+
+for
+
+{city}
+
+Return the answer as bullet points.
+
+"""
+
+        response = ask_ai(prompt)
+
+        st.write(response)
+
+    st.divider()
+
+    if st.button(
+        "Generate Emergency Kit",
+        key="kit"
+    ):
+
+        prompt = """
+
+Generate a flood emergency kit.
+
+Include
+
+Medicines
+
+Food
+
+Water
+
+Important documents
+
+Power bank
+
+Torch
+
+Radio
+
+Blankets
+
+Baby items
+
+Pet items
+
+"""
+
+        st.success(
+            ask_ai(prompt)
+        )
+
+    st.divider()
+
+    if st.button(
+        "Flood Safety Tips",
+        key="tips"
+    ):
+
+        st.info(
+
+            ask_ai(
+
+                "Give flood safety tips before, during and after floods."
+
+            )
+
+        )
+
+    st.divider()
+
+    if st.button(
+        "Flood First Aid",
+        key="aid"
+    ):
+
+        st.success(
+
+            ask_ai(
+
+                "Explain first aid after flood injuries."
+
+            )
+
+        )
+
+    st.divider()
+
+    if st.button(
+        "Children Safety",
+        key="child"
+    ):
+
+        st.write(
+
+            ask_ai(
+
+                "How can parents protect children during floods?"
+
+            )
+
+        )
+
+    st.divider()
+
+    if st.button(
+        "Pet Safety",
+        key="pet"
+    ):
+
+        st.write(
+
+            ask_ai(
+
+                "How to protect pets during floods?"
+
+            )
+
+        )
+
+    st.divider()
+
+    if st.button(
+        "Vehicle Safety",
+        key="vehicle"
+    ):
+
+        st.write(
+
+            ask_ai(
+
+                "How to protect cars and bikes during floods?"
+
+            )
+
+        )
+
 #---------------------------END OF CODE-----------------------------------------#
-
-
 
