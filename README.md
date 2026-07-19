@@ -1,58 +1,68 @@
 # 🌊 FloodSense AI - Urban Flood Risk Prediction System
 
-## 📌 Project Overview
+### AI-Powered Urban Flood Risk Prediction & Disaster Assistance System
 
-FloodSense AI is an interactive machine learning application that predicts urban flood risk using environmental, geographical, and historical flood data. The application provides real-time predictions, interactive visualizations, geospatial mapping, and AI performance evaluation through an intuitive Streamlit dashboard.
-
----
-
-## 🎯 Objectives
-
-- Predict flood occurrence using machine learning.
-- Analyze environmental and geographical flood factors.
-- Visualize flood-prone locations through interactive maps.
-- Provide real-time flood risk predictions.
-- Evaluate model performance using multiple classification metrics.
+FloodSense AI is an intelligent flood prediction and emergency assistance platform built using **Python, Streamlit, Scikit-learn, Plotly, and Groq AI**. It predicts urban flood risks using environmental and geographical data while also providing real-time AI-powered disaster guidance, safety recommendations, and emergency support.
 
 ---
 
-## 📂 Dataset
+## 📌 Features
 
-The model uses flood-related environmental data containing features such as:
+### 🌧️ Flood Risk Prediction
+- Predicts flood occurrence using Machine Learning.
+- Supports Random Forest and Gradient Boosting algorithms.
+- Displays flood probability and risk levels.
+- Generates easy-to-understand prediction explanations.
 
-- Latitude
-- Longitude
-- Rainfall (mm)
-- Temperature (°C)
-- Humidity (%)
-- River Discharge (m³/s)
-- Water Level (m)
-- Elevation (m)
-- Land Cover
-- Soil Type
-- Population Density
-- Infrastructure
-- Historical Floods
-- Flood Occurred (Target Variable)
+### 📊 Interactive Dashboard
+- Dataset overview
+- Flood vs Safe distribution
+- Rainfall trend analysis
+- Flood statistics
+- Key insights
+
+### 🗺️ Interactive Flood Map
+- Plot flood locations using GPS coordinates
+- Flood hotspot heatmap
+- High-risk area identification
+
+### 📈 Risk Factor Analysis
+- Feature importance visualization
+- Correlation analysis
+- Top flood contributing factors
+
+### 🤖 AI Performance Evaluation
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+- ROC Curve
+- Confusion Matrix
+- Cross Validation Score
+
+### 📂 Data Explorer
+- Filter flood and safe events
+- Sort datasets
+- Download filtered CSV/TSV
+- Data quality analysis
+
+### 🤖 Flood AI Assistant (Groq AI)
+- Flood safety guidance
+- Rescue assistance
+- Emergency kit generation
+- Flood first aid
+- Nearby hospitals
+- Police stations
+- Fire stations
+- Relief camps
+- Government support information
+- Children safety
+- Pet safety
+- Vehicle safety
 
 ---
 
-## 🚀 Features
-
-- 🌊 Flood Risk Prediction
-- 📊 Interactive Dashboard
-- 🗺️ Geospatial Flood Mapping
-- 📈 Feature Importance Analysis
-- 📉 Correlation Analysis
-- 🤖 Random Forest & Gradient Boosting Models
-- 📋 Dataset Explorer
-- 📥 Download Filtered Dataset
-- 📊 AI Performance Metrics
-- 🎯 Real-time Prediction Interface
-
----
-
-## 🛠️ Technologies Used
+# 🛠 Technologies Used
 
 - Python
 - Streamlit
@@ -61,123 +71,183 @@ The model uses flood-related environmental data containing features such as:
 - Scikit-learn
 - Plotly
 - OpenPyXL
+- Groq AI (Llama 3.3 70B)
+- HTML & CSS
 
 ---
 
-## 🤖 Machine Learning Models
+# 📂 Dataset Requirements
 
-- Random Forest Classifier
-- Gradient Boosting Classifier
+The uploaded Excel dataset should contain the following columns:
 
----
-
-## 📊 Visualizations
-
-The application includes:
-
-- Interactive Dashboard
-- Flood Distribution Charts
-- Feature Importance Graph
-- Correlation Analysis
-- Flood Density Heatmap
-- Scatter Map
-- ROC Curve
-- Confusion Matrix
-- Cross Validation Results
-- Risk Probability Gauge
-- Flood Risk Contributors
-- Dataset Statistics
+| Column |
+|---------|
+| Latitude |
+| Longitude |
+| Rainfall (mm) |
+| Temperature (°C) |
+| Humidity (%) |
+| River Discharge (m³/s) |
+| Water Level (m) |
+| Elevation (m) |
+| Land Cover |
+| Soil Type |
+| Population Density |
+| Infrastructure |
+| Historical Floods |
+| Flood Occurred |
 
 ---
 
-## 📈 Model Evaluation
+# ⚙️ Machine Learning Pipeline
 
-The project evaluates model performance using:
+1. Upload Dataset
+2. Data Cleaning
+3. Label Encoding
+4. Feature Scaling
+5. Train/Test Split
+6. Model Training
+7. Flood Prediction
+8. Performance Evaluation
+9. Risk Visualization
+10. AI Disaster Assistance
 
-- Accuracy
+---
+
+# 📊 Evaluation Metrics
+
+- Accuracy Score
 - Precision
 - Recall
 - F1 Score
-- ROC-AUC Score
-- Cross Validation Score
 - Confusion Matrix
+- ROC Curve
+- AUC Score
+- Cross Validation Score
 
 ---
 
-## 📁 Project Structure
+# 🤖 AI Assistant Capabilities
 
-```
-FloodSense-AI/
-│
-├── app.py
-├── dataset.xlsx
-├── README.md
-└── requirements.txt
-```
+The integrated Groq AI assistant can answer questions related to:
+
+- Flood preparedness
+- Rescue guidance
+- Emergency response
+- Evacuation planning
+- Nearby emergency centres
+- Government helplines
+- Weather precautions
+- Flood first aid
+- Children safety
+- Pet safety
+- Vehicle protection
+- Emergency kits
 
 ---
 
-## ▶️ How to Run
+# 📸 Application Modules
 
-### 1. Clone the repository
+- 🏠 Dashboard
+- 🔍 Predict Risk
+- 🗺️ Flood Map
+- 📊 Risk Factors
+- 🤖 AI Performance
+- 📋 Data Explorer
+- 🤖 AI Assistant
+
+---
+
+# 🚀 Installation
+
+Clone the repository
 
 ```bash
 git clone https://github.com/yourusername/FloodSense-AI.git
 ```
 
-### 2. Install dependencies
+Move into the project folder
+
+```bash
+cd FloodSense-AI
+```
+
+Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-or
-
-```bash
-pip install streamlit pandas numpy scikit-learn plotly openpyxl
-```
-
-### 3. Run the application
+Run the application
 
 ```bash
 streamlit run app.py
 ```
 
-### 4. Upload your flood dataset
+---
 
-Upload an Excel (.xlsx) file containing the required environmental features and begin exploring predictions.
+# 🔑 API Configuration
+
+Replace the following line inside `app.py`
+
+```python
+GROQ_API_KEY = "YOUR_API_KEY"
+```
+
+with your own Groq API Key.
 
 ---
 
-## 📌 Project Workflow
+# 📁 Project Structure
 
-1. Upload flood dataset
-2. Data preprocessing
-3. Feature encoding and scaling
-4. Model training
-5. Flood risk prediction
-6. Visualization and analysis
-7. Performance evaluation
-8. Download filtered results
+```
+FloodSense-AI/
+│
+├── app.py
+├── requirements.txt
+├── README.md
+├── dataset.xlsx
+└── assets/
+```
 
 ---
 
-## 🔮 Future Enhancements
+# 🌍 Future Enhancements
 
-- Deep Learning-based flood prediction
 - Live weather API integration
+- Google Maps integration
+- Real-time flood alerts
+- SMS notification system
 - Satellite imagery analysis
-- SMS & Email flood alerts
 - IoT sensor integration
-- Cloud deployment
-- Mobile application support
+- Mobile application
+- Multi-language AI assistant
 
 ---
 
-## 👨‍💻 Author
+# 🎯 Applications
+
+- Disaster Management Authorities
+- Municipal Corporations
+- Smart Cities
+- Environmental Monitoring
+- Urban Planning
+- Climate Risk Assessment
+- Emergency Response Teams
+- Research Institutions
+
+---
+
+# 👨‍💻 Author
 
 **Harshadh Vimalan**
 
+B.Sc Artificial Intelligence & Machine Learning
+
+Final Year Project
+
 ---
 
-## ⭐ If you found this project useful, please consider giving it a Star!
+# 📄 License
+
+This project is developed for educational and research purposes.
